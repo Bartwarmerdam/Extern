@@ -1,0 +1,33 @@
+#!/bin/bash
+#SBATCH --ntasks=32
+#SBATCH --cpus-per-task=1
+#SBATCH --ntasks-per-node=32
+#SBATCH --partition inf
+#SBATCH --time=5000000
+#SBATCH --mem=100G
+#SBATCH -J IBM3RUN
+#SBATCH --output %x.o%j
+#SBATCH --error %x.e%j
+#ulimit -s unlimited
+
+expnr=007
+Exp_dir=$(pwd)
+Les_Src_dir=~/dales/src
+Les_Exe_dir=/net/labdata/bart/IBM8.build/src
+Case_dir=/net/labdata/bart/InputBolund
+prof_ext=.Fitk148dz1u17v-4stretch30fit
+# lscale_ext=.Bolundk64dz25u13v-10
+# case_ext=.Bolundk64dz25
+rural_ext=.BolundECdz1nx256dx4
+
+
+#cp $Case_dir/prof.inp$prof_ext $Exp_dir/prof.inp.$expnr
+#cp $Case_dir/lscale.inp$prof_ext $Exp_dir/lscale.inp.$expnr
+#cp $Case_dir/scalar.inp$prof_ext $Exp_dir/scalar.inp.$expnr
+#cp $Case_dir/rural_bc.inp$rural_ext $Exp_dir/ibm.inp.$expnr
+
+cp $Les_Exe_dir/dales4 $Exp_dir/dales4
+export HDF5_USE_FILE_LOCKING=FALSE
+mpirun dales4
+
+
