@@ -1,0 +1,95 @@
+&RUN
+iexpnr     =  007
+runtime    =  21600
+dtmax      =  50.
+ladaptive  =  .true.
+irandom    =  43
+randthl    =  1e-1
+randqt     =  0e-5
+nsv        =  0
+/
+&DOMAIN
+itot       =  256
+jtot       =  256
+kmax       =  125
+xsize      =  1024
+ysize      =  1024
+xlat       =  55.7
+xlon       =  12.
+/
+&PHYSICS
+ps         =  101900.00
+thls       =  288.
+lmoist     =  .false.
+lcoriol    =  .true.
+iradiation = 0
+z0         = 0.00030
+
+/
+&NAMSURFACE
+wtsurf     = 0e-1
+wqsurf     =  6.67e-5
+isurf      = 2
+lmostlocal = .true.
+/
+&DYNAMICS
+lqlnr      =  .true.
+cu         =  0.
+cv         =  0.
+iadv_mom    =  2
+iadv_tke    =  2
+iadv_thl    =  2
+iadv_qt     =  2
+iadv_sv     =  2 2
+
+/
+&NAMSUBGRID
+ldelta      = .true.
+Prandtl     = 1
+/
+&NAMCHECKSIM
+tcheck      = 10
+/
+&NAMTIMESTAT
+ltimestat   = .true.
+dtav        = 40
+/
+&NAMGENSTAT
+lstat       = .true.
+dtav        = 60
+timeav      = 1200
+/
+&NUDGEBOUNDARY
+lnudgeboundary = .true.
+lstatref = .false.
+nudgedepthgr = 10
+/
+&NAMNETCDFSTATS
+lnetcdf = .true.
+/
+&NAMIBM
+lapply_ibm = .true.
+lreadfile_obstacles = .true.
+lnoslip = .false.
+lwallfunc = .true.
+lfluxform = .true.
+lpoislast = .true.
+thlwall = 288
+ct = 0.
+/
+&NAMMICROPHYSICS
+imicro = 0
+l_sb = .true.
+Nc_0 = 100e6
+/
+&NAMBULKMICROSTAT
+lmicrostat = .false.
+dtav = 60
+timeav = 600
+/
+&NAMFIELDDUMP
+lfielddump = .true.
+klow = 1
+khigh = 15
+dtav = 120
+/
