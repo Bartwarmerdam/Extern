@@ -91,8 +91,7 @@ contains
     call MPI_BCAST(lstatref,1,MPI_LOGICAL,0,MPI_COMM_WORLD,mpierr) 
     call MPI_BCAST(nudgedepthgr       ,1,MPI_INTEGER,0,MPI_COMM_WORLD,mpierr) 
 
-    if (.not. (lnudgeboundary)) return
-
+    
     if (lnudgeboundary) Nsim = 2
     if (lnudgeboundary) turid = 2
     if (.not. lstatref .and. Nsim == 2) statid = 2
@@ -336,7 +335,6 @@ contains
 
   subroutine exitnudgeboundary
 
-    if (.not. (lnudgeboundary)) return
     deallocate(fnudgeglob,fnudgeloc)
     deallocate(umsave, vmsave, wmsave, thlmsave, qtmsave, e12msave)
     deallocate(u0save, v0save, w0save, thl0save, qt0save, e120save)
